@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELMET3AM</title>
+</head>
+<body>
+<input type="text" id="recipe-input" placeholder="Food or Ingredients">
+<button onclick="fetchRecipeData()">Search Food or Ingredients</button>
+<button id="prevBtn" onclick="fetchRecipeData('prev')">Previous</button>
+<button id="nextBtn" onclick="fetchRecipeData('next')">Next</button>
+<div id="filter-container">
+    <input type="checkbox" id="glutenfree" value="gluten">
+    <label for="glutenfree">Exclude Gluten</label><br>
+    <input type="checkbox" id="dairyfree" value="dairy">
+    <label for="dairyfree">Exclude Dairy</label><br>
+    <input type="checkbox" id="nutsfree" value="nuts">
+    <label for="nutsfree">Exclude Nuts</label><br>
+</div>
+<script id="recipe-template" type="text/x-template-handlebars">
+{{#each recipes}}
+    <div class="recipe">
+        <a href = {{href}} target="_blank">{{title}}</a>
+    
+        <img src={{thumbnail}}>
+       
+       
+        <h2> By Chef : {{chefName}}</h2>
+        <h3>Rating : {{ratingNumber}}</h3>
+        <ul>
+            {{#each ingredients}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    <div class="mailBtn">
+        <a href="mailto:secretRecipeWorldOrder@gmail.com?cc=Syssaphus.com&bcc=/insertGreekMyth.com
+        &subject=The%20Recipe%20for%20{{title}}
+        &body=The%20Link%20For%20{{title}}%20{{href}}">
+        Send mail
+        </a>
+    </div>
+{{/each}}   
+</script>
+
+<link rel="stylesheet" href="styles.css">
+<script src="./jquery/dist/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+<script src="main.js"></script>
+
+
+</body>
+</html>
